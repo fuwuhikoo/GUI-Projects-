@@ -20,7 +20,7 @@ def exportList():
             f.write("%s/n" % item)
 
 def clearWindow():
-    for widgets in top .after.winfo_children():
+    for widgets in top.winfo_children():
         widgets.destroy()
 
 def mainMenu():
@@ -68,19 +68,18 @@ def week1():
 
 def week2():
     def rollDice():
+        #update variable data
         dieType = E1W2.get()
         rollTimes = E2W2.get()
-        
         #Clear window AFTER pulling entry data
         clearWindow()
-        
-        #calculate dice rolls
+        #roll the dice
         for x in range(0, int(rollTimes)):
             myRolls.append(random.randint(1, int(dieType)))
             
-        #display dice rolls and present an exit button
+        #build the results window
         L4W2 = Label(top, text= "Here are your rolls!")
-        L4W2.grid(column= 0, row =1)
+        L4W2.grid(column= 0, row= 1)
         #this one will use a .format() statement 
         L5W2 = Label(top, text = "{}".format(myRolls))
         L5W2.grid(column = 0, row = 2)
@@ -88,7 +87,12 @@ def week2():
         B2W2 = Button(text= "Main Menu", bg= "black", command = mainMenu)
         B2W2.grid(column= 0, row = 3)
             
+    clearWindow()
+    B1Week2 = Button(text="Roll em!", bg="yellow", command = rollDice)
+    B1Week2.grid(column = 2, row= 4)
 
+    L1Week2 = Label(top, text= "Dice Roller App")
+    L1Week2.grid(column= 2, row= 1) 
     
     clearWindow()
     L1W2 = Label(top, text="Dice Roller Program")
